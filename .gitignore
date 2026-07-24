@@ -1,0 +1,6 @@
+# Secrets - never commit
+.env
+
+# OS junk
+.DS_Store
+Thumbs.db

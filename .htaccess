@@ -1,0 +1,41 @@
+# ============================================================
+# AJ Wills Website - Maintenance Mode
+# ============================================================
+# While this is active, every visitor is redirected to
+# /maintenance.html EXCEPT:
+#   - static assets (css/js/images) so the maintenance page can render
+#   - /maintenance.html, /login.php and /logout.php themselves
+#   - anyone whose browser holds the "ajwills_access" cookie
+#     (set by login.php after a successful Ian/Amy login)
+#
+# To bring the live site back: delete or rename this file.
+# ============================================================
+
+# Never allow the credentials file to be served directly.
+<FilesMatch "^\.env">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Logged-in team members bypass the redirect.
+  RewriteCond %{HTTP_COOKIE} ajwills_access=aa2e9d203e1e607bccba259880b93a389adda04324c4f12e0f25caa6fbcdee19 [NC]
+  RewriteRule ^ - [L]
+
+  # Always allow the maintenance page, login/logout, and site assets.
+  RewriteRule ^maintenance\.html$ - [L]
+  RewriteRule ^login\.php$ - [L]
+  RewriteRule ^logout\.php$ - [L]
+  RewriteRule ^assets/ - [L]
+
+  # Everything else is redirected to the maintenance page.
+  RewriteCond %{REQUEST_URI} !^/maintenance\.html$
+  RewriteRule ^ /maintenance.html [R=302,L]
+</IfModule>
