@@ -4,3 +4,6 @@
 # OS junk
 .DS_Store
 Thumbs.db
+
+# Internal build/reference material - not part of the live site
+Build files/
