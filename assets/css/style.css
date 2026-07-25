@@ -255,9 +255,17 @@ p:last-child { margin-bottom: 0; }
   justify-content: space-between;
   gap: var(--space-8);
 }
-.logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-.logo-img { height: 110px; width: auto; display: block; transition: height var(--transition); }
+.logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; min-width: 0; }
+.logo-img { height: 110px; max-width: 100%; width: auto; display: block; transition: height var(--transition); }
 .site-header.scrolled .logo-img { height: 90px; }
+@media (max-width: 992px) {
+  .logo-img { height: 64px; }
+  .site-header.scrolled .logo-img { height: 56px; }
+}
+@media (max-width: 480px) {
+  .logo-img { height: 44px; }
+  .site-header.scrolled .logo-img { height: 40px; }
+}
 
 .nav-menu { display: flex; align-items: center; gap: 6px; list-style: none; }
 .nav-menu > li { position: relative; }
