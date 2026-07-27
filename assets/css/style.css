@@ -612,6 +612,7 @@ p:last-child { margin-bottom: 0; }
 
 /* ── Content Split ─────────────────────────────────────────── */
 .content-split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-16); align-items: center; }
+.content-split > * { min-width: 0; }
 .content-split.reverse { direction: rtl; }
 .content-split.reverse > * { direction: ltr; }
 @media (max-width: 768px) { .content-split { grid-template-columns: 1fr; } }
