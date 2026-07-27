@@ -7,7 +7,10 @@
 
 declare(strict_types=1);
 
-define('RECIPIENT_EMAIL', 'info@ajwills.uk');
+require_once __DIR__ . '/env.php';
+$env = load_env(__DIR__ . '/../.env');
+
+define('RECIPIENT_EMAIL', $env['LEAD_RECIPIENT_EMAIL'] ?? 'info@ajwills.uk');
 define('RECIPIENT_NAME',  'AJ Wills & Estate Planning');
 define('FROM_EMAIL',      'noreply@ajwills.uk');
 define('FROM_NAME',       'AJ Wills & Estate Planning');

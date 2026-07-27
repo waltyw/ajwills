@@ -1,0 +1,12 @@
+# Lead log files contain personal data (names, emails, phone numbers)
+# and must never be served directly, regardless of whether the
+# site-wide maintenance mode gate in the root .htaccess is active.
+<FilesMatch "\.csv$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
