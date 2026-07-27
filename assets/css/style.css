@@ -707,13 +707,14 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 768px) { .lead-magnet { grid-template-columns: 1fr; padding: var(--space-8); } }
 
 /* ── Guide Jump Nav ────────────────────────────────────────── */
-.guide-jump-nav { display: flex; justify-content: center; gap: var(--space-3); flex-wrap: wrap; padding: var(--space-8) 15px; }
+.guide-jump-nav { display: flex; justify-content: center; align-items: center; gap: var(--space-6); flex-wrap: wrap; padding: var(--space-12) 15px; }
 .guide-jump-nav a {
   display: inline-flex; align-items: center; gap: var(--space-2);
   background: var(--color-bg-panel); border: 1.5px solid var(--stone-500); color: var(--charcoal-700);
   font-weight: 600; font-size: 0.9rem; padding: var(--space-3) var(--space-6); border-radius: var(--radius-full);
   transition: all var(--transition);
 }
+.guide-jump-nav a i { color: var(--color-accent); }
 .guide-jump-nav a:hover { border-color: var(--color-accent); color: var(--color-accent); background: var(--terracotta-50); }
 
 /* ── Guide Cards ───────────────────────────────────────────── */
