@@ -818,6 +818,14 @@ p:last-child { margin-bottom: 0; }
   font-size: 1.6rem; margin: 0 auto var(--space-5);
 }
 
+/* ── Guide Access Gate ─────────────────────────────────────── */
+.guide-gate-overlay { z-index: 9700; }
+.guide-locked { filter: blur(10px); pointer-events: none; user-select: none; transition: filter 0.3s ease; }
+html.guides-preunlocked .guide-gate-overlay.show { display: none !important; }
+html.guides-preunlocked .guide-locked { filter: none; pointer-events: auto; user-select: auto; }
+.guide-gate-modal { max-width: 440px; }
+.guide-gate-modal .form-group { text-align: left; }
+
 /* ── Mobile Sticky Contact Bar ─────────────────────────────── */
 .mobile-sticky-bar {
   display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 8000;

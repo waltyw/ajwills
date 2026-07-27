@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
+  <script>try{if(localStorage.getItem('ajw_guides_unlocked')==='1'){document.documentElement.classList.add('guides-preunlocked');}}catch(e){}</script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G6QEEDZE21"></script>
   <script>
@@ -116,7 +117,7 @@
   </section>
 
   <!-- Guide Content -->
-  <section class="section">
+  <section class="section guide-locked" id="guideProtectedContent">
     <div class="container" style="max-width:760px">
       <div class="card" style="text-align:center">
         <img src="/assets/images/guides/introduction-to-inheritance-tax-guide.jpg" alt="An Introduction to Inheritance Tax" style="width:100%;height:auto;border-radius:var(--radius-lg);border:1px solid var(--stone-500);margin-bottom:var(--space-8)" loading="lazy">
@@ -249,6 +250,36 @@
   </button>
 </div>
 
+<!-- Guide Access Gate -->
+<div class="exit-overlay guide-gate-overlay show" id="guideGateOverlay">
+  <div class="exit-modal guide-gate-modal" role="dialog" aria-labelledby="guide-gate-title">
+    <div class="exit-modal-icon" aria-hidden="true"><i class="fa-solid fa-unlock-keyhole"></i></div>
+    <h3 id="guide-gate-title" style="text-align:center">Get Instant Access</h3>
+    <p class="text-muted text-center mb-6">Pop in your details to unlock this guide — and every other guide on our site. We'll only ask once.</p>
+    <form id="guideGateForm" data-guide-gate-form action="/php/guide-access.php" novalidate>
+      <div class="form-group">
+        <label class="form-label" for="ggName">Name <span class="required">*</span></label>
+        <input class="form-input" type="text" id="ggName" name="name" required>
+        <span class="form-error" id="ggNameError">Please enter your name.</span>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ggEmail">Email <span class="required">*</span></label>
+        <input class="form-input" type="email" id="ggEmail" name="email" required>
+        <span class="form-error" id="ggEmailError">Please enter a valid email address.</span>
+      </div>
+      <div class="form-group mb-0">
+        <label class="form-label" for="ggPhone">Phone (optional)</label>
+        <input class="form-input" type="tel" id="ggPhone" name="phone">
+      </div>
+      <input type="hidden" name="guide" value="An Introduction to Inheritance Tax">
+      <input type="text" name="website_url" class="visually-hidden" tabindex="-1" autocomplete="off">
+      <p class="form-error" id="ggFormMsg" style="display:none;text-align:center;margin-top:var(--space-3)"></p>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:var(--space-4)">Unlock This Guide</button>
+    </form>
+    <p class="text-center mt-6"><a href="/guides/" class="card-link text-sm">&larr; Back to all guides</a></p>
+  </div>
+</div>
+
 <!-- Exit Intent Popup -->
 <div class="exit-overlay" id="exitOverlay">
   <div class="exit-modal" role="dialog" aria-labelledby="exit-title">
@@ -281,6 +312,7 @@
 <div class="toast" id="toast" role="alert" aria-live="assertive" style="display:none"></div>
 
 <script src="/assets/js/main.js?v=1"></script>
+<script src="/assets/js/guide-gate.js?v=1"></script>
 <script src="/assets/js/chatbot.js?v=1"></script>
 </body>
 </html>
