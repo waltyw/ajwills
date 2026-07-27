@@ -706,6 +706,16 @@ p:last-child { margin-bottom: 0; }
 }
 @media (max-width: 768px) { .lead-magnet { grid-template-columns: 1fr; padding: var(--space-8); } }
 
+/* ── Guide Jump Nav ────────────────────────────────────────── */
+.guide-jump-nav { display: flex; justify-content: center; gap: var(--space-3); flex-wrap: wrap; padding: var(--space-8) 0; }
+.guide-jump-nav a {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  background: var(--color-bg-panel); border: 1.5px solid var(--stone-500); color: var(--charcoal-700);
+  font-weight: 600; font-size: 0.9rem; padding: var(--space-3) var(--space-6); border-radius: var(--radius-full);
+  transition: all var(--transition);
+}
+.guide-jump-nav a:hover { border-color: var(--color-accent); color: var(--color-accent); background: var(--terracotta-50); }
+
 /* ── Guide Cards ───────────────────────────────────────────── */
 .guide-card { display: flex; flex-direction: column; height: 100%; }
 .guide-card-tag {
@@ -715,10 +725,10 @@ p:last-child { margin-bottom: 0; }
 }
 .guide-cover {
   width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: top center;
-  border-radius: var(--radius-arch); border: 1px solid var(--stone-500);
+  border-radius: var(--radius-lg); border: 1px solid var(--stone-500);
   margin-bottom: var(--space-5);
 }
-.guide-cover.guide-cover-wide { aspect-ratio: 16/10; border-radius: var(--radius-lg); }
+.guide-cover.guide-cover-wide { aspect-ratio: 16/10; }
 
 /* ── Footer ────────────────────────────────────────────────── */
 .site-footer { background: var(--olive-600); color: rgba(255,255,255,0.72); }
