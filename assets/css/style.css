@@ -826,6 +826,20 @@ html.guides-preunlocked .guide-locked { filter: none; pointer-events: auto; user
 .guide-gate-modal { max-width: 440px; }
 .guide-gate-modal .form-group { text-align: left; }
 
+/* ── Back to Top Button ────────────────────────────────────── */
+.back-to-top {
+  position: fixed; bottom: var(--space-6); left: var(--space-6); z-index: 9999;
+  width: 62px; height: 62px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--charcoal-700), var(--charcoal-900));
+  border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-xl); transition: transform var(--transition), opacity 0.25s ease, visibility 0.25s ease;
+  opacity: 0; visibility: hidden;
+}
+.back-to-top.show { opacity: 1; visibility: visible; }
+.back-to-top:hover { transform: scale(1.08); }
+.back-to-top svg { width: 24px; height: 24px; stroke: #fff; }
+@media (max-width: 768px) { .back-to-top { bottom: 76px; } }
+
 /* ── Mobile Sticky Contact Bar ─────────────────────────────── */
 .mobile-sticky-bar {
   display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 8000;

@@ -230,6 +230,18 @@
     });
   }
 
+  // ── Back to Top ────────────────────────────────────────────────────────
+  function initBackToTop() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('show', window.scrollY > 400);
+    }, { passive: true });
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   // ── Initialise all ────────────────────────────────────────────────────
   function init() {
     initNav();
@@ -239,6 +251,7 @@
     initExitIntent();
     initScrollAnimations();
     initAnchorScroll();
+    initBackToTop();
   }
 
   if (document.readyState === 'loading') {
