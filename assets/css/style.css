@@ -171,8 +171,11 @@ p:last-child { margin-bottom: 0; }
   opacity: 0.5;
 }
 .olive-divider span {
-  color: var(--olive-600);
-  font-size: 0.9rem;
+  display: inline-block;
+  width: 1.5em;
+  aspect-ratio: 101.3 / 77.3;
+  background: url('/assets/images/olive-branch-divider.svg') no-repeat center / contain;
+  font-size: 1.5rem;
 }
 
 /* ── Buttons ───────────────────────────────────────────────── */
