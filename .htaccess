@@ -8,3 +8,29 @@
     Deny from all
   </IfModule>
 </FilesMatch>
+
+# Canonicalise on the apex domain — www.ajwills.uk was serving duplicate
+# content instead of redirecting, which splits SEO signal between two URLs.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.ajwills\.uk$ [NC]
+  RewriteRule ^(.*)$ https://ajwills.uk/$1 [L,R=301]
+</IfModule>
+
+# Explicit cache lifetimes so JS gets the same caching as CSS/images
+# instead of relying on host defaults.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType text/javascript "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/png "access plus 7 days"
+  ExpiresByType image/jpeg "access plus 7 days"
+  ExpiresByType image/webp "access plus 7 days"
+  ExpiresByType image/svg+xml "access plus 7 days"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|png|jpe?g|webp|svg)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+</IfModule>
