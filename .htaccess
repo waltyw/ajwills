@@ -18,19 +18,25 @@
 </IfModule>
 
 # Explicit cache lifetimes so JS gets the same caching as CSS/images
-# instead of relying on host defaults.
+# instead of relying on host defaults. CSS/JS are always requested with a
+# ?v= cache-busting query string, so it's safe to cache them for a year;
+# images aren't versioned, so they get a shorter 30-day lifetime in case
+# one needs replacing under the same filename.
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresByType text/css "access plus 7 days"
-  ExpiresByType text/javascript "access plus 7 days"
-  ExpiresByType application/javascript "access plus 7 days"
-  ExpiresByType image/png "access plus 7 days"
-  ExpiresByType image/jpeg "access plus 7 days"
-  ExpiresByType image/webp "access plus 7 days"
-  ExpiresByType image/svg+xml "access plus 7 days"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
 </IfModule>
 <IfModule mod_headers.c>
-  <FilesMatch "\.(css|js|png|jpe?g|webp|svg)$">
-    Header set Cache-Control "public, max-age=604800"
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpe?g|webp|svg)$">
+    Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>
 </IfModule>
